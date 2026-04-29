@@ -306,13 +306,13 @@ function HeroSection() {
 
         {/* Date badge */}
         <motion.div
-          className="inline-flex items-center gap-3 px-7 py-3 rounded-full mb-10 p-2"
+          className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full mb-10"
           style={{
             background: '#7a1a2e',
             color: '#fff',
             fontFamily: 'Inter, sans-serif',
             fontWeight: 500,
-            fontSize: '0.875rem',
+            fontSize: '0.75rem',
             letterSpacing: '0.15em',
             boxShadow: '0 4px 24px rgba(122,26,46,0.35)',
           }}
@@ -373,28 +373,6 @@ function HeroSection() {
         style={{ maxWidth: '700px', margin: '0 auto' }}
       >
         <MandapSVG />
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.1, duration: 0.6 }}
-        style={{ animationName: 'scroll-bounce' }}
-      >
-        <span
-          className="text-xs tracking-widest"
-          style={{ color: '#c9973a', fontFamily: 'Inter, sans-serif' }}
-        >
-          SCROLL
-        </span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <ChevronDown size={20} style={{ color: '#c9973a' }} />
-        </motion.div>
       </motion.div>
     </section>
   );
