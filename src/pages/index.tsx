@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import CountdownTimer from '@/components/ui/countdown-timer';
 import EventCards from '@/components/ui/event-cards';
@@ -201,13 +202,31 @@ function HeroSection() {
 
       {/* Main content */}
       <div className="relative z-10 text-center px-6 pt-28 pb-8 max-w-4xl mx-auto">
+        
+        {/* Lord Ganesha Icon */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="flex justify-center mb-5"
+        >
+          <Image
+            src="/ganesh.png" // Make sure this image exists in your /public folder
+            alt="Shri Ganeshay Namah"
+            width={84}
+            height={84}
+            className="object-contain drop-shadow-md"
+            priority
+          />
+        </motion.div>
+
         {/* Invite subtitle */}
         <motion.p
           className="text-sm tracking-[0.35em] uppercase mb-6"
           style={{ color: '#c9973a', fontFamily: 'Inter, sans-serif', fontWeight: 500 }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
+          transition={{ delay: 0.4, duration: 0.7 }}
         >
           We cordially invite you
         </motion.p>
@@ -216,7 +235,7 @@ function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.9 }}
+          transition={{ delay: 0.6, duration: 0.9 }}
         >
           <h1
             className="leading-none mb-2"
@@ -267,7 +286,7 @@ function HeroSection() {
           className="flex justify-center items-center gap-4 my-7"
           initial={{ opacity: 0, scaleX: 0 }}
           animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
+          transition={{ delay: 0.9, duration: 0.6 }}
         >
           <div className="h-px flex-1 max-w-[120px]" style={{ background: 'linear-gradient(90deg, transparent, #c9973a)' }} />
           <span style={{ color: '#c9973a', fontSize: '1.2rem' }}>✦ 💕 ✦</span>
@@ -280,7 +299,7 @@ function HeroSection() {
           style={{ color: '#5a3040', fontFamily: 'Inter, sans-serif', fontWeight: 300, lineHeight: 1.7 }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.7 }}
+          transition={{ delay: 1.1, duration: 0.7 }}
         >
           Join us for the celebration of our wedding
         </motion.p>
@@ -299,7 +318,7 @@ function HeroSection() {
           }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.1, duration: 0.6 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
         >
           <span>🗓️</span>
           <span>MAY 8TH 2026</span>
@@ -312,7 +331,7 @@ function HeroSection() {
           className="flex flex-wrap justify-center gap-4 relative z-20"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.3, duration: 0.6 }}
+          transition={{ delay: 1.4, duration: 0.6 }}
         >
           <Link
             href="/gallery"
@@ -350,7 +369,7 @@ function HeroSection() {
         className="relative z-10 w-full px-4 mt-4"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.4, duration: 0.9 }}
+        transition={{ delay: 1.5, duration: 0.9 }}
         style={{ maxWidth: '700px', margin: '0 auto' }}
       >
         <MandapSVG />
@@ -361,7 +380,7 @@ function HeroSection() {
         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 0.6 }}
+        transition={{ delay: 2.1, duration: 0.6 }}
         style={{ animationName: 'scroll-bounce' }}
       >
         <span

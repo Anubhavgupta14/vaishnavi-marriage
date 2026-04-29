@@ -82,7 +82,7 @@ export default function FlowerShower() {
       <motion.button
         id="flower-shower-btn"
         onClick={bless}
-        className="fixed bottom-8 right-6 z-50 flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold shadow-2xl"
+        className="fixed bottom-8 cursor-pointer right-6 z-50 flex items-center gap-2 px-5 py-3 rounded-full text-sm font-semibold shadow-2xl"
         style={{
           background: 'linear-gradient(135deg, #7a1a2e 0%, #9b2335 100%)',
           color: '#fff',
