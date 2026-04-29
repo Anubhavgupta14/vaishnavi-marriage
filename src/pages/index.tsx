@@ -1,5 +1,6 @@
 import Head from 'next/head';
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 import CountdownTimer from '@/components/ui/countdown-timer';
@@ -380,6 +381,140 @@ function HeroSection() {
   );
 }
 
+// ─── Parallax Image Section ───────────────────────────────────────────────────
+
+function ParallaxImageSection({
+  imageSrc,
+  caption,
+  alt,
+  reverse = false,
+}: {
+  imageSrc: string;
+  caption: string;
+  alt: string;
+  reverse?: boolean;
+}) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  // More travel range for visible parallax depth
+  const imageY = useTransform(scrollYProgress, [0, 1], ['-12%', '12%']);
+
+  // Caption drifts subtly upward as you scroll through
+  const captionY = useTransform(scrollYProgress, [0, 1], ['24px', '-24px']);
+  // Wider opacity window so caption is visible longer
+  const captionOpacity = useTransform(
+    scrollYProgress,
+    [0.05, 0.2, 0.8, 0.95],
+    [0, 1, 1, 0]
+  );
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative"
+      style={{
+        height: 'clamp(520px, 75vh, 860px)',
+        overflow: 'hidden',          // keep overflow on the section, not the motion div
+      }}
+    >
+      {/* Parallax image — oversized so edges never show during travel */}
+      <motion.div
+        className="absolute inset-0"
+        style={{
+          y: imageY,
+          top: '-15%',               // pre-expand so travel never reveals edges
+          bottom: '-15%',
+          left: 0,
+          right: 0,
+        }}
+      >
+        <img
+          src={imageSrc}
+          alt={alt}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center 30%',
+            display: 'block',
+          }}
+        />
+      </motion.div>
+
+      {/* Overlay — slightly heavier for caption legibility */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: reverse
+            ? 'linear-gradient(180deg, rgba(26,10,15,0.55) 0%, rgba(26,10,15,0.2) 50%, rgba(26,10,15,0.55) 100%)'
+            : 'linear-gradient(180deg, rgba(26,10,15,0.2) 0%, rgba(26,10,15,0.55) 50%, rgba(26,10,15,0.2) 100%)',
+        }}
+      />
+
+      {/* Gold border lines */}
+      <div
+        className="absolute top-0 left-0 right-0 pointer-events-none"
+        style={{ height: '3px', background: 'linear-gradient(90deg, transparent 10%, #c9973a 50%, transparent 90%)' }}
+      />
+      <div
+        className="absolute bottom-0 left-0 right-0 pointer-events-none"
+        style={{ height: '3px', background: 'linear-gradient(90deg, transparent 10%, #c9973a 50%, transparent 90%)' }}
+      />
+
+      {/* Floating caption */}
+      <motion.div
+        className="absolute inset-0 flex items-center pointer-events-none"
+        style={{
+          y: captionY,
+          opacity: captionOpacity,
+          justifyContent: reverse ? 'flex-start' : 'flex-end',
+          paddingLeft: reverse ? '6%' : undefined,
+          paddingRight: reverse ? undefined : '6%',
+        }}
+      >
+        <div
+          style={{
+            maxWidth: '480px',
+            padding: '32px 44px',
+            background: 'rgba(26,10,15,0.5)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            borderRadius: '16px',
+            border: '1.5px solid rgba(201,151,58,0.45)',
+            textAlign: 'center',
+          }}
+        >
+          <p
+            style={{
+              fontFamily: 'Cormorant Garamond, serif',
+              fontStyle: 'italic',
+              fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)',
+              color: '#fff',
+              lineHeight: 1.45,
+              margin: 0,
+              textShadow: '0 2px 12px rgba(0,0,0,0.5)',
+            }}
+          >
+            {caption}
+          </p>
+          <div
+            style={{
+              width: '56px',
+              height: '1.5px',
+              margin: '18px auto 0',
+              background: 'linear-gradient(90deg, transparent, #c9973a, transparent)',
+            }}
+          />
+        </div>
+      </motion.div>
+    </section>
+  );
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function Home() {
@@ -395,7 +530,24 @@ export default function Home() {
 
       <main>
         <HeroSection />
+
+        {/* Parallax image — traditional */}
+        <ParallaxImageSection
+          imageSrc="/5.jpeg"
+          alt="Vaishnavi and Sumeet in traditional attire at a temple"
+          caption="Two souls, one heart — forever entwined"
+        />
+
         <CountdownTimer />
+
+        {/* Parallax image — romantic silhouette */}
+        <ParallaxImageSection
+          imageSrc="/7.jpeg"
+          alt="Vaishnavi and Sumeet silhouette by the ocean"
+          caption="Where the sky meets the sea, I found you"
+          reverse
+        />
+
         <EventCards />
         <VenueMap />
       </main>

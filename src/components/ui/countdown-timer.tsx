@@ -83,7 +83,9 @@ function FlipUnit({ value, label }: { value: number; label: string }) {
             justifyContent: 'center',
           }}
         >
+          {/* FIX: Added suppressHydrationWarning here */}
           <span
+            suppressHydrationWarning
             style={{
               fontFamily: 'Cormorant Garamond, serif',
               fontWeight: 600,
@@ -112,7 +114,9 @@ function FlipUnit({ value, label }: { value: number; label: string }) {
               transformOrigin: 'center top',
             }}
           >
+            {/* FIX: Added suppressHydrationWarning here too, just in case */}
             <span
+              suppressHydrationWarning
               style={{
                 fontFamily: 'Cormorant Garamond, serif',
                 fontWeight: 600,

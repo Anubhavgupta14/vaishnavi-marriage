@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
@@ -49,12 +50,7 @@ export default function Navbar() {
       <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="group">
-          <span
-            className="font-serif text-2xl italic"
-            style={{ color: '#7a1a2e', fontFamily: 'Cormorant Garamond, serif' }}
-          >
-            V <span style={{ color: '#c9973a' }}>♥</span> S
-          </span>
+          <Image src="/favicon.png" alt="Logo" width={80} height={80} />
         </Link>
 
         {/* Desktop links */}
