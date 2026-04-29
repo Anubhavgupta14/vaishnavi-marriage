@@ -55,7 +55,9 @@ export default function VenuePage() {
         </section>
 
         {/* Map + directions */}
-        <VenueMap />
+        <div className="mt-10">
+          <VenueMap />
+        </div>
 
         {/* Schedule strip */}
         <section
@@ -97,36 +99,42 @@ export default function VenuePage() {
                   >
                     {/* Dot on timeline */}
                     <div
-                      className="absolute -left-10 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full flex items-center justify-center text-xs"
+                      className="absolute -left-12 top-1/2 -translate-y-1/2 w-5 h-5 rounded-full flex items-center justify-center text-xs"
                       style={{ background: '#7a1a2e', color: '#fff', border: '3px solid #fdf6f0' }}
                     >
                     </div>
 
+                    {/* Updated Card Container */}
                     <div
-                      className="rounded-2xl p-5 flex items-center gap-5"
+                      className="rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5"
                       style={{ background: '#fdf6f0', border: '1px solid #f0cfc0' }}
                     >
-                      <div
-                        className="w-12 h-12 rounded-full flex items-center justify-center text-2xl flex-shrink-0"
-                        style={{ background: '#fff', border: '1px solid #f0cfc0' }}
-                      >
-                        {event.icon}
-                      </div>
-                      <div className="flex-1">
-                        <h3
-                          className="text-xl italic"
-                          style={{ color: '#7a1a2e', fontFamily: 'Cormorant Garamond, serif', fontWeight: 600 }}
+                      {/* Icon and Text Wrapper */}
+                      <div className="flex items-center gap-4 sm:gap-5 flex-1">
+                        <div
+                          className="w-12 h-12 rounded-full flex items-center justify-center text-2xl flex-shrink-0"
+                          style={{ background: '#fff', border: '1px solid #f0cfc0' }}
                         >
-                          {event.name}
-                        </h3>
-                        <p
-                          className="text-sm"
-                          style={{ color: '#8a5060', fontFamily: 'Inter, sans-serif' }}
-                        >
-                          {event.description}
-                        </p>
+                          {event.icon}
+                        </div>
+                        <div className="flex-1">
+                          <h3
+                            className="text-xl italic"
+                            style={{ color: '#7a1a2e', fontFamily: 'Cormorant Garamond, serif', fontWeight: 600 }}
+                          >
+                            {event.name}
+                          </h3>
+                          <p
+                            className="text-sm"
+                            style={{ color: '#8a5060', fontFamily: 'Inter, sans-serif' }}
+                          >
+                            {event.description}
+                          </p>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-1.5 flex-shrink-0">
+
+                      {/* Time Container */}
+                      <div className="flex items-center gap-1.5 pl-16 sm:pl-0 flex-shrink-0">
                         <Clock size={14} style={{ color: '#c9973a' }} />
                         <span
                           className="text-sm font-semibold"
