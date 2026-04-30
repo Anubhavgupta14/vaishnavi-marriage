@@ -17,33 +17,19 @@ export const WEDDING = {
 
 export const EVENTS = [
   {
+    name: 'Haldi',
+    icon: '🌻',
+    time: '8:05 AM',
+    description: 'A traditional haldi ceremony',
+    color: '#c9973a',
+  },
+  {
     name: 'Varmala',
     icon: '💍',
     time: '12:37 PM',
     description: 'The sacred exchange of garlands',
     color: '#7a1a2e',
-  },
-  {
-    name: 'Saptapadi',
-    icon: '🔥',
-    time: '1:30 PM',
-    description: 'Seven vows around the sacred fire',
-    color: '#c9973a',
-  },
-  {
-    name: 'Phera',
-    icon: '🌸',
-    time: '2:15 PM',
-    description: 'Circling the sacred flame together',
-    color: '#9b2335',
-  },
-  {
-    name: 'Reception',
-    icon: '🎉',
-    time: '7:00 PM',
-    description: 'Celebrate with us at the evening reception',
-    color: '#7a1a2e',
-  },
+  }
 ];
 
 export const GALLERY_IMAGES = Array.from({ length: 7 }, (_, i) => ({
